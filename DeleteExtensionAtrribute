@@ -1,0 +1,20 @@
+#!/bin/bash
+
+jamfURL="https://URL_HERE.jamfcloud.com/"
+jamfUsername=""
+jamfPassword=""
+idNumber=""
+
+
+#encoding credentials so they aren't sent in plaintext
+encodedCreds=$(printf "$jamfUsername:$jamfPassword" | iconv -t ISO-8859-1 | base64 -i -)
+
+#using encoded credentials to get bearer token
+token=$(curl -s "${jamfURL}/api/v1/auth/token" -H "Authorization: Basic $encodedCreds" -X POST | jq -r ".token")
+
+curl -X 'DELETE' \
+  $jamfURL'JSSResource/computerextensionattributes/id/6' \
+  -H 'accept: application/xml' \
+  -H 'Authorization: Bearer Authorization: Bearer '${token}
+  
+  curl -s -k "${jamfURL}JSSResource/computerextensionattributes/id/${idNumber}" -H "Authorization: Bearer ${token}" -X DELETE
