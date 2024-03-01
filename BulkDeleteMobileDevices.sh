@@ -34,5 +34,10 @@ done < "$input"
 input2="/users/shared/deviceids.csv"
 while IFS= read line2; do
     echo "Attempting to delete Mobile device ID: $line2"
-    /usr/bin/curl -s -H "Authorization: Bearer $token" $url/JSSResource/mobiledevices/id/$line2 -X DELETE
+
+    
+    #DELETES DEVICES, DO NOT UNCOMMENT THIS UNTIL YOU ARE 100% YOU ARE READY FOR DELETION. DEVICE INVETNORY IS NO RECOVERABLE
+
+    
+    #/usr/bin/curl -s -H "Authorization: Bearer $token" $url/JSSResource/mobiledevices/id/$line2 -X DELETE
 done < "$input2"
