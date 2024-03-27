@@ -12,6 +12,8 @@ getBearerToken() {
 	tokenExpirationEpoch=$(date -j -f "%Y-%m-%dT%T" "$tokenExpiration" +"%s")
 }
 
+echo "getting bearer token"
+
 getBearerToken
 
 curl --request POST \
