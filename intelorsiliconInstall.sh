@@ -19,11 +19,11 @@ IFS=$OLDIFS
   
   if [[ -n "$processor" ]]; then
 	echo "Installing Intel Package"
-	installer -pkg /private/tmp/zoominstaller/Intel/ZoomIntel.pkg -target /
+	installer -pkg /PATH/TO/PKG -target /
 	echo "done installing Intel package"
   else
 	echo "Installing M1 package"
-	installer -pkg /private/tmp/zoominstaller/M1/ZoomM1.pkg -target /
+	installer -pkg PATH/TO/PKG -target /
 	echo "done installing m1 package"
   fi   
 exit $exitcode
